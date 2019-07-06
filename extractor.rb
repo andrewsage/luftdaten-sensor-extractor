@@ -18,6 +18,7 @@ objects.each do |object|
 	location_data = object["location"]
 	id = location_data["id"]
 	location = location_hashes[id] || { "id": id }
+	location["timestamp"] = object["timestamp"]
 	location["latitude"] = location_data["latitude"]
 	location["longitude"] = location_data["longitude"]
 	location["altitude"] = location_data["altitude"]
