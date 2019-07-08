@@ -3,7 +3,7 @@ require 'json'
 
 latitude = 57.165746
 longitude = -2.102081
-range = 10 # km
+range = 20 # km
 
 url = "http://api.luftdaten.info/v1/filter/area=#{latitude},#{longitude},#{range}"
 uri = URI(url)
@@ -32,6 +32,8 @@ location_hashes.each_value do |value|
 	locations << value
 end
 
+full_model_to_export = { "locations": locations }
+
 File.open("extracted.json", "w") do |f|
-	f.write(locations.to_json)
+	f.write(full_model_to_export.to_json)
 end
